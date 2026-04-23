@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>ExfilTrap — Near Real-Time DNS Threat Detection</title>
+  <meta name="description" content="An ML-powered platform for near real-time DNS threat detection with centralized monitoring and contextual threat intelligence. SLIIT Research Project R-25-26J-066." />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#" onclick="showPage('home')">
+      <img src="assets/images/logo.png" alt="ExfilTrap Logo" />
+      <div>
+        <span>ExfilTrap</span>
+        <span class="tagline">R-25-26J-066 · SLIIT</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+      <li><a href="#" onclick="showPage('domain')" id="nav-domain">Domain</a></li>
+      <li><a href="#" onclick="showPage('milestones')" id="nav-milestones">Milestones</a></li>
+      <li><a href="#" onclick="showPage('documents')" id="nav-documents">Documents</a></li>
+      <li><a href="#" onclick="showPage('slides')" id="nav-slides">Slides</a></li>
+      <li><a href="#" onclick="showPage('about')" id="nav-about">About Us</a></li>
+      <li><a href="#" onclick="showPage('contact')" class="nav-cta" id="nav-contact">Contact</a></li>
+    </ul>
+    <span class="nav-badge">R-25-26J-066</span>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+<!-- =========================================================
+     HOME PAGE
+     ========================================================= -->
+<div id="page-home" class="page-content active">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">Research Project · SLIIT · 2025–2026</div>
+        <h1>Near Real-Time <span>DNS Threat</span> Detection &amp; Intelligence</h1>
+        <p>An AI/ML-powered platform that detects DNS tunneling, DGA-based malware, and infrastructure abuse in near real-time — purpose-built for enterprise SOC environments.</p>
+        <div class="hero-btns">
+          <a class="btn btn-primary" href="https://youtu.be/PiZkUQClmsE?si=AQ6pdRTxqCpvqcOo" target="_blank">▶ Watch Demo</a>
+          <a class="btn btn-ghost" href="#" onclick="showPage('domain')">Explore Research →</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="hero-card-title">Project at a Glance</div>
+        <div class="stat-grid">
+          <div class="stat"><div class="stat-num">92<span>%</span></div><div class="stat-label">Completion</div></div>
+          <div class="stat"><div class="stat-num">3<span>+</span></div><div class="stat-label">Detection Modules</div></div>
+          <div class="stat"><div class="stat-num">6<span>+</span></div><div class="stat-label">ML Models</div></div>
+          <div class="stat"><div class="stat-num">4</div><div class="stat-label">Team Members</div></div>
+        </div>
+        <div class="hero-tags">
+          <span class="hero-tag">DNS Security</span>
+          <span class="hero-tag">Machine Learning</span>
+          <span class="hero-tag">SIEM Integration</span>
+          <span class="hero-tag">Threat Intelligence</span>
+          <span class="hero-tag">DoH/DoT</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">The Problem</div>
+      <h2 class="section-title">Why DNS Security Matters</h2>
+      <p class="section-sub">DNS is the backbone of the internet — and one of the most exploited attack vectors. Existing solutions lack real-time detection, contextual intelligence, and scalable handling of large DNS log volumes.</p>
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></div>
+          <h3>DNS Tunneling</h3>
+          <p>Attackers encode sensitive data into DNS queries to silently exfiltrate information, bypassing firewalls and perimeter defenses without raising alarms.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h.01M15 9h.01M9 15h6"/></svg></div>
+          <h3>DGA-Based Malware</h3>
+          <p>Malware uses Domain Generation Algorithms to generate thousands of pseudo-random domains daily, making blacklisting-based defenses ineffective.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <h3>DNS Infrastructure Abuse</h3>
+          <p>Open resolvers are exploited for amplification attacks, creating massive traffic floods that overwhelm victim networks and disrupt services.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Overview -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-label">Our Solution</div>
+      <h2 class="section-title">ExfilTrap — What We Built</h2>
+      <p class="section-sub">A unified, six-layer detection pipeline that combines ML inference, behavioral analysis, and contextual threat intelligence to detect and explain DNS-based threats in near real-time.</p>
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3>Unified Sniffer Agent</h3>
+          <p>Lightweight C++ endpoint agent leveraging Npcap for passive DNS capture across UDP/TCP port 53, TCP port 443 (DoH), and TCP port 853 (DoT). Privacy-preserving — analyzes metadata without decryption.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4c0 2 2 3 2 5h4c0-2 2-3 2-5a4 4 0 0 0-4-4zM10 17h4M11 20h2"/></svg></div>
+          <h3>ML Detection Engine</h3>
+          <p>Three parallel subsystems handle DNS tunneling, DGA-based C2 activity, and infrastructure abuse. Uses Logistic Regression, Random Forest, and Dempster–Shafer Theory for probabilistic fusion.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M2 12h2m16 0h2M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/><circle cx="12" cy="12" r="4"/></svg></div>
+          <h3>Threat Intelligence Module</h3>
+          <p>Continuous enrichment pipeline ingesting VirusTotal, dark source feeds, and OSINT data. Applies risk scoring and sector classification to every detection event.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 17V13m5 4V7m5 10v-4"/></svg></div>
+          <h3>SIEM / SOC Dashboard</h3>
+          <p>Real-time visibility through Kibana integration. Alert queues, severity distributions, and analyst-friendly investigation interface with explainability support for every alert.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Demo Video -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Demo</div>
+      <h2 class="section-title">See ExfilTrap in Action</h2>
+      <p class="section-sub">Watch a live demonstration of the DNS threat detection platform detecting tunneling, DGA activity, and infrastructure abuse in real time.</p>
+      <a href="https://youtu.be/PiZkUQClmsE?si=AQ6pdRTxqCpvqcOo" target="_blank" style="display:block;max-width:800px;margin:0 auto;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow-md);text-decoration:none;transition:all .3s var(--ease);" onmouseover="this.style.boxShadow='var(--shadow-lg)';this.style.transform='translateY(-3px)'" onmouseout="this.style.boxShadow='var(--shadow-md)';this.style.transform='none'">
+        <div style="background:linear-gradient(135deg,#0f0f23,#1a1a3e,#12122a);aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;">
+          <div style="width:72px;height:72px;border-radius:50%;background:rgba(79,70,229,.2);border:2px solid rgba(79,70,229,.4);display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:all .3s;" onmouseover="this.style.background='rgba(79,70,229,.4)'" onmouseout="this.style.background='rgba(79,70,229,.2)'">
+            <svg width="28" height="28" fill="white" viewBox="0 0 24 24"><polygon points="9.5 7 17 12 9.5 17"/></svg>
+          </div>
+          <div style="color:white;font-weight:700;font-size:1rem;margin-bottom:4px;">Watch the Demo</div>
+          <div style="color:rgba(255,255,255,.5);font-size:.82rem;">Click to open on YouTube</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Tech Photos -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-label">Research Highlights</div>
+      <h2 class="section-title">Project in Pictures</h2>
+      <div class="grid-4" style="margin-top:0;">
+        <img src="assets/images/tech1.jpg" alt="Research" style="border-radius:var(--radius);box-shadow:var(--shadow-md);width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--border);transition:all .25s var(--ease);cursor:pointer;" onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='var(--shadow-md)'" />
+        <img src="assets/images/tech2.jpg" alt="Research" style="border-radius:var(--radius);box-shadow:var(--shadow-md);width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--border);transition:all .25s var(--ease);cursor:pointer;" onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='var(--shadow-md)'" />
+        <img src="assets/images/tech3.jpg" alt="Research" style="border-radius:var(--radius);box-shadow:var(--shadow-md);width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--border);transition:all .25s var(--ease);cursor:pointer;" onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='var(--shadow-md)'" />
+        <img src="assets/images/tech4.jpg" alt="Research" style="border-radius:var(--radius);box-shadow:var(--shadow-md);width:100%;aspect-ratio:4/3;object-fit:cover;border:1px solid var(--border);transition:all .25s var(--ease);cursor:pointer;" onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='var(--shadow-lg)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='var(--shadow-md)'" />
+      </div>
+    </div>
+  </section>
+
+</div><!-- end home -->
+
+
+<!-- =========================================================
+     DOMAIN PAGE
+     ========================================================= -->
+<div id="page-domain" class="page-content">
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Domain</div>
+      <h2 class="section-title">Research Domain</h2>
+      <p class="section-sub">An in-depth look at DNS security, the threat landscape, and the research gap that motivated ExfilTrap.</p>
+
+      <div class="domain-section">
+        <!-- Sidebar nav -->
+        <nav class="domain-nav" aria-label="Domain sections">
+          <a href="#lit-review" class="active" onclick="domainNav(this)">Literature Survey</a>
+          <a href="#research-gap" onclick="domainNav(this)">Research Gap</a>
+          <a href="#research-problem" onclick="domainNav(this)">Research Problem</a>
+          <a href="#objectives" onclick="domainNav(this)">Research Objectives</a>
+          <a href="#methodology" onclick="domainNav(this)">Methodology</a>
+          <a href="#technologies" onclick="domainNav(this)">Technologies Used</a>
+        </nav>
+
+        <div class="domain-body">
+
+          <!-- Literature Survey -->
+          <div class="domain-section-block" id="lit-review">
+            <h2>Literature Survey</h2>
+            <h3>Overview of the Domain Name System (DNS)</h3>
+            <p>The Domain Name System (DNS) resolves domain names into IP addresses through a hierarchical query process involving multiple distributed servers. The resolution process involves DNS query initiation, root server queries, TLD server queries, authoritative server queries, and final response delivery to the client.</p>
+            <p>DNS traffic exhibits several distinct characteristics: it is high-volume and continuous, lightweight and structured, and highly repetitive. While caching at recursive resolvers reduces repeated lookups, client devices continue to generate recurring queries due to session expiry, load balancing, and application behavior.</p>
+
+            <h3>Security Assumptions and Historical Design Limitations</h3>
+            <p>DNS was originally designed as a high-performance, available system without security as a core objective. It lacks built-in mechanisms to verify query authenticity or restrict protocol misuse. While DNSSEC provides record integrity validation, it cannot prevent DNS from being exploited as a covert communication channel.</p>
+            <p>The openness of domain registration and global accessibility of recursive resolvers make DNS an attractive attack vector. Malicious DNS activity closely mimics legitimate traffic patterns, and the protocol's request/response brevity allows data or commands to be concealed within seemingly normal queries.</p>
+
+            <h3>DNS as an Attack Vector</h3>
+            <p>DNS traffic is often implicitly trusted within enterprise networks. Attackers exploit this trust to embed malicious communication within seemingly legitimate DNS queries — bypassing firewall restrictions, evading intrusion detection systems, and maintaining persistent communication with compromised hosts.</p>
+
+            <h3>Classification of Existing Detection Approaches</h3>
+            <ul>
+              <li><strong>Lexical and structural methods:</strong> Analyze domain name patterns for anomalies</li>
+              <li><strong>Statistical and traffic volume methods:</strong> Analyze DNS traffic metrics over time</li>
+              <li><strong>Behavioral and temporal methods:</strong> Analyze timing and interaction patterns</li>
+              <li><strong>Machine learning-based methods:</strong> Use trained models to classify DNS activity</li>
+              <li><strong>Threat intelligence-driven methods:</strong> Use external intelligence to identify known malicious indicators</li>
+            </ul>
+          </div>
+
+          <!-- Research Gap -->
+          <div class="domain-section-block" id="research-gap">
+            <h2>Research Gap</h2>
+            <div class="highlight-box">
+              <p>The vast majority of existing literature tests models using synthetic datasets, pre-collected data in controlled laboratory settings, or simulated traffic — insufficiently representative of live DNS environments.</p>
+            </div>
+            <p>While evaluation settings that are reproducible have advantages, they are insufficient for real-world deployments due to additional factors including incremental feature extraction, adaptive baselining, and continuous inference in a streaming context.</p>
+            <p>Furthermore, the increasing adoption of DNS over HTTPS (DoH) and DNS over TLS (DoT) has significantly reduced visibility into query payloads, complicating detection of data exfiltration by obscuring query contents and forcing analysts to rely on metadata and behavioral indicators.</p>
+            <p>Current CTI platforms also suffer from "Alert Fatigue" — large amounts of generic indicators that lack organizational context — making it difficult for SOC analysts to effectively triage threats.</p>
+          </div>
+
+          <!-- Research Problem -->
+          <div class="domain-section-block" id="research-problem">
+            <h2>Research Problem</h2>
+            <div class="highlight-box">
+              <p>Existing DNS security solutions lack near real-time detection capabilities, contextual threat intelligence, and efficient handling of the large DNS log volumes required for ML-based analysis in enterprise environments.</p>
+            </div>
+            <p>Specifically, organizations face three compounding challenges:</p>
+            <ul>
+              <li>Large volumes of DNS traffic must be collected and stored before being processed by ML models, creating significant storage requirements and data management challenges.</li>
+              <li>Encrypted DNS (DoH/DoT) adoption limits payload inspection, forcing detection to rely on metadata alone.</li>
+              <li>Existing threat intelligence platforms deliver generic alerts without organizational context, contributing to analyst alert fatigue in SOC environments.</li>
+            </ul>
+          </div>
+
+          <!-- Objectives -->
+          <div class="domain-section-block" id="objectives">
+            <h2>Research Objectives</h2>
+            <p><strong>Main Objective:</strong> Develop an ML-based near real-time DNS anomaly detection system with centralized monitoring and contextual threat intelligence for enterprise environments.</p>
+            <ul>
+              <li>Design and implement a unified DNS packet capture agent that handles plaintext and encrypted DNS traffic (DoH/DoT) without compromising user privacy.</li>
+              <li>Develop parallel ML-based detection subsystems for DNS tunneling, DGA-based malware, C2 communication, and DNS infrastructure abuse.</li>
+              <li>Build a contextual threat intelligence and resilience module that enriches detection events with external IoCs, risk scores, and sector classifications.</li>
+              <li>Integrate with enterprise SIEM environments (Kibana) to deliver real-time visibility and analyst-friendly investigation workflows.</li>
+              <li>Provide explainability support for all detection decisions to enable effective human oversight.</li>
+            </ul>
+          </div>
+
+          <!-- Methodology -->
+          <div class="domain-section-block" id="methodology">
+            <h2>Methodology</h2>
+            <h3>System Architecture</h3>
+            <p>The system follows a producer–consumer architecture that decouples packet capture from ML inference to prevent processing bottlenecks. The high-level architecture comprises 6 principal layers arranged in a sequential processing pipeline:</p>
+            <ol style="padding-left:20px;color:var(--text-muted);font-size:0.92rem;line-height:1.8;">
+              <li style="margin-bottom:10px;"><strong style="color:var(--indigo)">Unified Sniffer Agent</strong> — Lightweight C++ endpoint agent for passive DNS capture via Npcap</li>
+              <li style="margin-bottom:10px;"><strong style="color:var(--indigo)">Detection Engine</strong> — Three parallel ML subsystems targeting distinct threat categories</li>
+              <li style="margin-bottom:10px;"><strong style="color:var(--indigo)">Threat Intelligence &amp; Resilience Module</strong> — Continuous enrichment pipeline with external feeds</li>
+              <li style="margin-bottom:10px;"><strong style="color:var(--indigo)">Centralized Relational Database</strong> — MySQL integration backbone for all data</li>
+              <li style="margin-bottom:10px;"><strong style="color:var(--indigo)">Query Interface &amp; Rule Management</strong> — Configurable rule engine with custom detection logic</li>
+              <li style="margin-bottom:10px;"><strong style="color:var(--indigo)">Operational Dashboard &amp; SIEM Integration</strong> — Real-time Kibana monitoring for SOC analysts</li>
+            </ol>
+
+            <h3>Data Acquisition</h3>
+            <p>Data sources include public datasets (CICBellEXFDNS, Kaggle DNS exfiltration, CIC DDoS, IOT, DOHbwr for lexical classification, and VCDB benign Alexa top 1M), live traffic captured via the deployed sniffer agent, and lab-generated malicious traffic using Iodine, dnscat2 frameworks, and custom exfiltration scripts.</p>
+
+            <h3>Detection Engine Design</h3>
+            <p>The detection engine employs specialized feature engineering per subsystem. Dempster–Shafer Theory (DST) is used for probabilistic fusion of lexical and behavioral model outputs to handle uncertainty and conflicting predictions. TF-IDF vectorization over character-level n-grams captures lexical patterns of DGA domains.</p>
+            <!-- Project Timeline - HTML/CSS -->
+            <div style="margin-top:20px;overflow-x:auto;">
+              <div style="display:flex;align-items:flex-start;gap:0;min-width:700px;position:relative;padding:24px 0 0;">
+                <div style="position:absolute;top:30px;left:16px;right:16px;height:3px;background:var(--border);border-radius:2px;z-index:0;"></div>
+                <div style="flex:1;text-align:center;position:relative;z-index:1;">
+                  <div style="width:12px;height:12px;border-radius:50%;background:var(--indigo);margin:0 auto 10px;border:3px solid var(--white);box-shadow:0 0 0 2px var(--indigo);"></div>
+                  <div style="font-size:.7rem;font-weight:700;color:var(--text);">Proposal</div>
+                  <div style="font-size:.65rem;color:var(--text-dim);">Sep 2025</div>
+                </div>
+                <div style="flex:1;text-align:center;position:relative;z-index:1;">
+                  <div style="width:12px;height:12px;border-radius:50%;background:var(--indigo);margin:0 auto 10px;border:3px solid var(--white);box-shadow:0 0 0 2px var(--indigo);"></div>
+                  <div style="font-size:.7rem;font-weight:700;color:var(--text);">PP-1 (50%)</div>
+                  <div style="font-size:.65rem;color:var(--text-dim);">Dec 2025</div>
+                </div>
+                <div style="flex:1;text-align:center;position:relative;z-index:1;">
+                  <div style="width:12px;height:12px;border-radius:50%;background:var(--indigo);margin:0 auto 10px;border:3px solid var(--white);box-shadow:0 0 0 2px var(--indigo);"></div>
+                  <div style="font-size:.7rem;font-weight:700;color:var(--text);">PP-2 (90%)</div>
+                  <div style="font-size:.65rem;color:var(--text-dim);">Mar 2026</div>
+                </div>
+                <div style="flex:1;text-align:center;position:relative;z-index:1;">
+                  <div style="width:12px;height:12px;border-radius:50%;background:var(--emerald);margin:0 auto 10px;border:3px solid var(--white);box-shadow:0 0 0 2px var(--emerald);"></div>
+                  <div style="font-size:.7rem;font-weight:700;color:var(--text);">Research Paper</div>
+                  <div style="font-size:.65rem;color:var(--text-dim);">Apr 2026</div>
+                </div>
+                <div style="flex:1;text-align:center;position:relative;z-index:1;">
+                  <div style="width:12px;height:12px;border-radius:50%;background:var(--amber);margin:0 auto 10px;border:3px solid var(--white);box-shadow:0 0 0 2px var(--amber);"></div>
+                  <div style="font-size:.7rem;font-weight:700;color:var(--text);">Final Report</div>
+                  <div style="font-size:.65rem;color:var(--text-dim);">May 2026</div>
+                </div>
+                <div style="flex:1;text-align:center;position:relative;z-index:1;">
+                  <div style="width:12px;height:12px;border-radius:50%;background:var(--amber);margin:0 auto 10px;border:3px solid var(--white);box-shadow:0 0 0 2px var(--amber);"></div>
+                  <div style="font-size:.7rem;font-weight:700;color:var(--text);">Viva</div>
+                  <div style="font-size:.65rem;color:var(--text-dim);">Jun 2026</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Technologies -->
+          <div class="domain-section-block" id="technologies">
+            <h2>Technologies Used</h2>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">C++</span>
+              <span class="tag">Npcap</span>
+              <span class="tag">Scikit-learn</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">Kibana / SIEM</span>
+              <span class="tag">DigitalOcean</span>
+              <span class="tag">Ubuntu VM</span>
+              <span class="tag green">Logistic Regression</span>
+              <span class="tag green">Random Forest</span>
+              <span class="tag green">Dempster–Shafer Theory</span>
+              <span class="tag green">TF-IDF</span>
+              <span class="tag">VirusTotal API</span>
+              <span class="tag">DoH / DoT</span>
+              <span class="tag">dnscat2</span>
+              <span class="tag">Iodine</span>
+              <span class="tag">Kafka / Streaming</span>
+              <span class="tag">NXDOMAIN Analysis</span>
+            </div>
+          </div>
+
+        </div><!-- end domain-body -->
+      </div><!-- end domain-section -->
+    </div>
+  </section>
+</div><!-- end domain -->
+
+
+<!-- =========================================================
+     MILESTONES PAGE
+     ========================================================= -->
+<div id="page-milestones" class="page-content">
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Milestones</div>
+      <h2 class="section-title">Project Milestones</h2>
+      <p class="section-sub">All assessments for the research project, including dates, marks allocated, and current status.</p>
+
+      <!-- Progress Ring -->
+      <div class="progress-ring-wrap">
+        <div class="progress-ring">
+          <svg width="80" height="80" viewBox="0 0 80 80">
+            <circle class="ring-bg" cx="40" cy="40" r="36"/>
+            <circle class="ring-fill" cx="40" cy="40" r="36"/>
+          </svg>
+          <div class="ring-text">92%</div>
+        </div>
+        <div class="progress-info">
+          <h3>Overall Project Completion</h3>
+          <p>4 of 6 milestones completed · Final Assessment and Viva remaining</p>
+        </div>
+      </div>
+
+      <!-- Milestones Table -->
+      <table class="milestones-table">
+        <thead>
+          <tr>
+            <th>Assessment</th>
+            <th>Weight</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="ms-name">Proposal Presentation</td><td>6%</td><td>September 2025</td><td><span class="ms-badge done">✓ Completed</span></td></tr>
+          <tr><td class="ms-name">Proposal Report</td><td>6%</td><td>September 2025</td><td><span class="ms-badge done">✓ Completed</span></td></tr>
+          <tr><td class="ms-name">Progress Presentation 1 (50%)</td><td>15%</td><td>2025 / 2026</td><td><span class="ms-badge done">✓ Completed</span></td></tr>
+          <tr><td class="ms-name">Progress Presentation 2 (90%)</td><td>18%</td><td>10 March 2026</td><td><span class="ms-badge done">✓ Completed</span></td></tr>
+          <tr><td class="ms-name">Final Report</td><td>15%</td><td>TBD 2026</td><td><span class="ms-badge pending">⏳ Pending</span></td></tr>
+          <tr><td class="ms-name">Final Report (Group)</td><td>4%</td><td>TBD 2026</td><td><span class="ms-badge pending">⏳ Pending</span></td></tr>
+          <tr><td class="ms-name">Final Presentation</td><td>10%</td><td>TBD 2026</td><td><span class="ms-badge pending">⏳ Pending</span></td></tr>
+          <tr><td class="ms-name">Viva</td><td>10%</td><td>TBD 2026</td><td><span class="ms-badge pending">⏳ Pending</span></td></tr>
+          <tr><td class="ms-name">Website</td><td>2%</td><td>2026</td><td><span class="ms-badge done">✓ Completed</span></td></tr>
+          <tr><td class="ms-name">Research Paper</td><td>10%</td><td>2026</td><td><span class="ms-badge done">✓ Completed</span></td></tr>
+          <tr><td class="ms-name">Check Lists</td><td>2%</td><td>2025</td><td><span class="ms-badge done">✓ Completed</span></td></tr>
+          <tr><td class="ms-name">Logbook</td><td>2%</td><td>Ongoing</td><td><span class="ms-badge done">✓ Completed</span></td></tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:48px;">
+        <h3 style="font-weight:700;color:var(--text);margin-bottom:16px;font-size:1.05rem;">Marks Allocation Overview</h3>
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);max-width:720px;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="flex:1;font-size:.82rem;font-weight:600;color:var(--text);">PP-1 (50%)</span><div style="flex:3;background:var(--bg-muted);border-radius:6px;height:22px;overflow:hidden;"><div style="width:60%;height:100%;background:var(--indigo);border-radius:6px;"></div></div><span style="width:36px;font-size:.78rem;font-weight:700;color:var(--text-sub);text-align:right;">15%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="flex:1;font-size:.82rem;font-weight:600;color:var(--text);">PP-2 (90%)</span><div style="flex:3;background:var(--bg-muted);border-radius:6px;height:22px;overflow:hidden;"><div style="width:72%;height:100%;background:var(--indigo);border-radius:6px;"></div></div><span style="width:36px;font-size:.78rem;font-weight:700;color:var(--text-sub);text-align:right;">18%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="flex:1;font-size:.82rem;font-weight:600;color:var(--text);">Final Report</span><div style="flex:3;background:var(--bg-muted);border-radius:6px;height:22px;overflow:hidden;"><div style="width:60%;height:100%;background:#7c3aed;border-radius:6px;"></div></div><span style="width:36px;font-size:.78rem;font-weight:700;color:var(--text-sub);text-align:right;">15%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="flex:1;font-size:.82rem;font-weight:600;color:var(--text);">Final Pres.</span><div style="flex:3;background:var(--bg-muted);border-radius:6px;height:22px;overflow:hidden;"><div style="width:40%;height:100%;background:#7c3aed;border-radius:6px;"></div></div><span style="width:36px;font-size:.78rem;font-weight:700;color:var(--text-sub);text-align:right;">10%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="flex:1;font-size:.82rem;font-weight:600;color:var(--text);">Viva</span><div style="flex:3;background:var(--bg-muted);border-radius:6px;height:22px;overflow:hidden;"><div style="width:40%;height:100%;background:#7c3aed;border-radius:6px;"></div></div><span style="width:36px;font-size:.78rem;font-weight:700;color:var(--text-sub);text-align:right;">10%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="flex:1;font-size:.82rem;font-weight:600;color:var(--text);">Research Paper</span><div style="flex:3;background:var(--bg-muted);border-radius:6px;height:22px;overflow:hidden;"><div style="width:40%;height:100%;background:var(--emerald);border-radius:6px;"></div></div><span style="width:36px;font-size:.78rem;font-weight:700;color:var(--text-sub);text-align:right;">10%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="flex:1;font-size:.82rem;font-weight:600;color:var(--text);">Proposals</span><div style="flex:3;background:var(--bg-muted);border-radius:6px;height:22px;overflow:hidden;"><div style="width:48%;height:100%;background:var(--emerald);border-radius:6px;"></div></div><span style="width:36px;font-size:.78rem;font-weight:700;color:var(--text-sub);text-align:right;">12%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="flex:1;font-size:.82rem;font-weight:600;color:var(--text);">Group Report</span><div style="flex:3;background:var(--bg-muted);border-radius:6px;height:22px;overflow:hidden;"><div style="width:16%;height:100%;background:var(--amber);border-radius:6px;"></div></div><span style="width:36px;font-size:.78rem;font-weight:700;color:var(--text-sub);text-align:right;">4%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="flex:1;font-size:.82rem;font-weight:600;color:var(--text);">Website</span><div style="flex:3;background:var(--bg-muted);border-radius:6px;height:22px;overflow:hidden;"><div style="width:8%;height:100%;background:var(--amber);border-radius:6px;"></div></div><span style="width:36px;font-size:.78rem;font-weight:700;color:var(--text-sub);text-align:right;">2%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;"><span style="flex:1;font-size:.82rem;font-weight:600;color:var(--text);">Logbook</span><div style="flex:3;background:var(--bg-muted);border-radius:6px;height:22px;overflow:hidden;"><div style="width:8%;height:100%;background:var(--amber);border-radius:6px;"></div></div><span style="width:36px;font-size:.78rem;font-weight:700;color:var(--text-sub);text-align:right;">2%</span></div>
+          <div style="display:flex;align-items:center;gap:12px;"><span style="flex:1;font-size:.82rem;font-weight:600;color:var(--text);">Checklists</span><div style="flex:3;background:var(--bg-muted);border-radius:6px;height:22px;overflow:hidden;"><div style="width:8%;height:100%;background:var(--amber);border-radius:6px;"></div></div><span style="width:36px;font-size:.78rem;font-weight:700;color:var(--text-sub);text-align:right;">2%</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div><!-- end milestones -->
+
+
+<!-- =========================================================
+     DOCUMENTS PAGE
+     ========================================================= -->
+<div id="page-documents" class="page-content">
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Documents</div>
+      <h2 class="section-title">Project Documents</h2>
+      <p class="section-sub">All produced and pending documents for the ExfilTrap research project. Click a document to view or download it.</p>
+
+      <!-- Project Proposals -->
+      <div class="doc-section-title">Project Proposals</div>
+      <div class="doc-grid">
+        <div class="doc-item">
+          <div class="doc-left">
+            <div class="doc-icon"><svg width="18" height="18" fill="none" stroke="var(--indigo)" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8m8 4H8m2-8H8"/></svg></div>
+            <div>
+              <div class="doc-name">Project Proposal — IT22369956 (Dewapriya S S)</div>
+              <div class="doc-desc">DNS Tunneling & Data Exfiltration Detection</div>
+            </div>
+          </div>
+          <a href="assets/docs/IT22339256-Proposal.pdf" class="doc-btn" target="_blank">View PDF ↗</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-left">
+            <div class="doc-icon"><svg width="18" height="18" fill="none" stroke="var(--indigo)" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8m8 4H8m2-8H8"/></svg></div>
+            <div>
+              <div class="doc-name">Project Proposal — IT22169662 (Gunasekara S G P I R)</div>
+              <div class="doc-desc">DGA-Based Malware C2 Detection</div>
+            </div>
+          </div>
+          <a href="assets/docs/IT22339256-Proposal.pdf" class="doc-btn" target="_blank">View PDF ↗</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-left">
+            <div class="doc-icon"><svg width="18" height="18" fill="none" stroke="var(--indigo)" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8m8 4H8m2-8H8"/></svg></div>
+            <div>
+              <div class="doc-name">Project Proposal — IT22883902 (Peiris S M)</div>
+              <div class="doc-desc">DNS Abuse & Infrastructure Attack Detection</div>
+            </div>
+          </div>
+          <a href="assets/docs/IT22883902-Proposal.pdf" class="doc-btn" target="_blank">View PDF ↗</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-left">
+            <div class="doc-icon"><svg width="18" height="18" fill="none" stroke="var(--indigo)" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M16 13H8m8 4H8m2-8H8"/></svg></div>
+            <div>
+              <div class="doc-name">Project Proposal — IT22925022 (Herath H M C A)</div>
+              <div class="doc-desc">Threat Intelligence & Resilience Module</div>
+            </div>
+          </div>
+          <a href="assets/docs/IT22925022-Proposal.pdf" class="doc-btn" target="_blank">View PDF ↗</a>
+        </div>
+      </div>
+
+      <!-- Progress Reports -->
+      <div class="doc-section-title">Progress Reports & Checklists</div>
+      <div class="doc-grid">
+        <div class="doc-item">
+          <div class="doc-left">
+            <div class="doc-icon"><svg width="18" height="18" fill="none" stroke="var(--indigo)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg></div>
+            <div>
+              <div class="doc-name">PPR Checklist — R-25-26J-066</div>
+              <div class="doc-desc">Preliminary Progress Review checklist document</div>
+            </div>
+          </div>
+          <a href="assets/docs/PPR-Checklist.pdf" class="doc-btn" target="_blank">View PDF ↗</a>
+        </div>
+        <div class="doc-item">
+          <div class="doc-left">
+            <div class="doc-icon"><svg width="18" height="18" fill="none" stroke="var(--indigo)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg></div>
+            <div>
+              <div class="doc-name">Final Document — Main (Group)</div>
+              <div class="doc-desc">Consolidated final research document</div>
+            </div>
+          </div>
+          <span class="doc-btn pending">Pending</span>
+        </div>
+      </div>
+
+      <!-- Research Paper -->
+      <div class="doc-section-title">Research Paper</div>
+      <div class="doc-grid">
+        <div class="doc-item">
+          <div class="doc-left">
+            <div class="doc-icon"><svg width="18" height="18" fill="none" stroke="var(--indigo)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 7V4a2 2 0 012-2h8.5L20 7.5V20a2 2 0 01-2 2H6a2 2 0 01-2-2v-3"/><path d="M14 2v6h6M5 15h9m-3-3 3 3-3 3"/></svg></div>
+            <div>
+              <div class="doc-name">Research Paper — ExfilTrap</div>
+              <div class="doc-desc">Near Real-Time DNS Threat Detection & Contextual Threat Intelligence</div>
+            </div>
+          </div>
+          <a href="assets/docs/Research-Paper.docx" class="doc-btn" target="_blank">Download ↗</a>
+        </div>
+      </div>
+
+      <!-- Final Docs -->
+      <div class="doc-section-title">Final Documents (Pending)</div>
+      <div class="doc-grid">
+        <div class="doc-item">
+          <div class="doc-left"><div class="doc-icon">📁</div>
+            <div><div class="doc-name">Final Document — IT22369956</div><div class="doc-desc">Individual final document – Tunneling & Exfiltration</div></div>
+          </div>
+          <span class="doc-btn pending">Pending</span>
+        </div>
+        <div class="doc-item">
+          <div class="doc-left"><div class="doc-icon">📁</div>
+            <div><div class="doc-name">Final Document — IT22169662</div><div class="doc-desc">Individual final document – DGA & C2 Detection</div></div>
+          </div>
+          <span class="doc-btn pending">Pending</span>
+        </div>
+        <div class="doc-item">
+          <div class="doc-left"><div class="doc-icon">📁</div>
+            <div><div class="doc-name">Final Document — IT22883902</div><div class="doc-desc">Individual final document – Infrastructure Abuse</div></div>
+          </div>
+          <span class="doc-btn pending">Pending</span>
+        </div>
+        <div class="doc-item">
+          <div class="doc-left"><div class="doc-icon">📁</div>
+            <div><div class="doc-name">Final Document — IT22925022</div><div class="doc-desc">Individual final document – Threat Intelligence</div></div>
+          </div>
+          <span class="doc-btn pending">Pending</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div><!-- end documents -->
+
+
+<!-- =========================================================
+     SLIDES PAGE
+     ========================================================= -->
+<div id="page-slides" class="page-content">
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Presentations</div>
+      <h2 class="section-title">Presentation Slides</h2>
+      <p class="section-sub">Slides from all past presentations, with placeholders for upcoming ones.</p>
+      <div class="slides-grid">
+
+        <div class="slide-card">
+          <div class="slide-thumb slide-thumb-done"><svg width="40" height="40" fill="none" stroke="rgba(79,70,229,.6)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+          <div class="slide-info">
+            <span class="slide-badge badge-done">Available</span>
+            <h3>Proposal Presentation</h3>
+            <p>Initial project proposal and research plan — September 2025</p>
+            <a href="assets/docs/Proposal-Presentation.pdf" class="doc-btn" target="_blank">View Slides ↗</a>
+          </div>
+        </div>
+
+        <div class="slide-card">
+          <div class="slide-thumb slide-thumb-done"><svg width="40" height="40" fill="none" stroke="rgba(79,70,229,.6)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+          <div class="slide-info">
+            <span class="slide-badge badge-done">Available</span>
+            <h3>Progress Presentation 1</h3>
+            <p>Initial implementation and early results — 2025/2026</p>
+            <a href="assets/docs/PP1-Presentation.pdf" class="doc-btn" target="_blank">View Slides ↗</a>
+          </div>
+        </div>
+
+        <div class="slide-card">
+          <div class="slide-thumb slide-thumb-done"><svg width="40" height="40" fill="none" stroke="rgba(79,70,229,.6)" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+          <div class="slide-info">
+            <span class="slide-badge badge-done">Available</span>
+            <h3>Progress Presentation 2</h3>
+            <p>Near-complete system demo at 92% — 10 March 2026</p>
+            <a href="assets/docs/PP2-Presentation.pptx" class="doc-btn" target="_blank">View Slides ↗</a>
+          </div>
+        </div>
+
+        <div class="slide-card is-pending">
+          <div class="slide-thumb slide-thumb-pending"><svg width="40" height="40" fill="none" stroke="rgba(100,116,139,.4)" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div class="slide-info">
+            <span class="slide-badge badge-pending">Upcoming</span>
+            <h3>Final Presentation</h3>
+            <p>Final assessment presentation — TBD 2026</p>
+            <span class="doc-btn pending">Not yet available</span>
+          </div>
+        </div>
+
+        <div class="slide-card is-pending">
+          <div class="slide-thumb slide-thumb-pending"><svg width="40" height="40" fill="none" stroke="rgba(100,116,139,.4)" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div class="slide-info">
+            <span class="slide-badge badge-pending">Upcoming</span>
+            <h3>Viva Presentation</h3>
+            <p>Oral defense slides — TBD 2026</p>
+            <span class="doc-btn pending">Not yet available</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div><!-- end slides -->
+
+
+<!-- =========================================================
+     ABOUT PAGE
+     ========================================================= -->
+<div id="page-about" class="page-content">
+  <section class="section">
+    <div class="container">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">Meet the Team</h2>
+      <p class="section-sub">The ExfilTrap research team — four undergraduate researchers from SLIIT, supervised by experienced faculty.</p>
+
+      <!-- Supervisors -->
+      <div class="team-section-title">Supervisors</div>
+      <div class="supervisors-row">
+        <div class="member-card supervisor-card">
+          <img src="assets/images/supervisor.jpg" alt="Mr. Kavinga Yapa" class="member-photo" />
+          <div class="member-body">
+            <div class="member-name">Mr. Kavinga Yapa</div>
+            <div class="member-role">Supervisor</div>
+            <div class="member-email">SLIIT Faculty of Computing</div>
+          </div>
+        </div>
+        <div class="member-card supervisor-card">
+          <img src="assets/images/cosupervisor.jpg" alt="Ms. Ayesha Wijesooriya" class="member-photo" />
+          <div class="member-body">
+            <div class="member-name">Ms. Ayesha Wijesooriya</div>
+            <div class="member-role">Co-Supervisor</div>
+            <div class="member-email">SLIIT Faculty of Computing</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Members -->
+      <div class="team-section-title" style="margin-top:48px;">Research Team</div>
+      <div class="grid-4">
+        <div class="member-card">
+          <img src="assets/images/member1.jpg" alt="Dewapriya S S" class="member-photo" />
+          <div class="member-body">
+            <div class="member-name">Dewapriya S S</div>
+            <div class="member-id">IT22369956</div>
+            <div class="member-role">DNS Tunneling & Exfiltration Detection</div>
+            <div class="member-email" style="margin-top:8px;"><svg width="13" height="13" fill="none" stroke="var(--indigo)" stroke-width="2" viewBox="0 0 24 24" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg> <a href="mailto:it22369956@my.sliit.lk" style="color:var(--indigo);transition:all .2s">it22369956@my.sliit.lk</a></div>
+          </div>
+        </div>
+        <div class="member-card">
+          <img src="assets/images/member2.jpg" alt="Gunasekara S G P I R" class="member-photo" />
+          <div class="member-body">
+            <div class="member-name">Gunasekara S G P I R</div>
+            <div class="member-id">IT22169662</div>
+            <div class="member-role">DGA-Based Malware C2 Detection</div>
+            <div class="member-email" style="margin-top:8px;"><svg width="13" height="13" fill="none" stroke="var(--indigo)" stroke-width="2" viewBox="0 0 24 24" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg> <a href="mailto:it22169662@my.sliit.lk" style="color:var(--indigo);transition:all .2s">it22169662@my.sliit.lk</a></div>
+          </div>
+        </div>
+        <div class="member-card">
+          <img src="assets/images/member3.jpg" alt="Peiris S M" class="member-photo" />
+          <div class="member-body">
+            <div class="member-name">Peiris S M</div>
+            <div class="member-id">IT22883902</div>
+            <div class="member-role">DNS Abuse & Infrastructure Attacks</div>
+            <div class="member-email" style="margin-top:8px;"><svg width="13" height="13" fill="none" stroke="var(--indigo)" stroke-width="2" viewBox="0 0 24 24" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg> <a href="mailto:it22883902@my.sliit.lk" style="color:var(--indigo);transition:all .2s">it22883902@my.sliit.lk</a></div>
+          </div>
+        </div>
+        <div class="member-card">
+          <img src="assets/images/member4.jpg" alt="Herath H M C A" class="member-photo" />
+          <div class="member-body">
+            <div class="member-name">Herath H M C A</div>
+            <div class="member-id">IT22925022</div>
+            <div class="member-role">Threat Intelligence & Resilience Module</div>
+            <div class="member-email" style="margin-top:8px;"><svg width="13" height="13" fill="none" stroke="var(--indigo)" stroke-width="2" viewBox="0 0 24 24" style="display:inline;vertical-align:middle;margin-right:4px"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg> <a href="mailto:it22925022@my.sliit.lk" style="color:var(--indigo);transition:all .2s">it22925022@my.sliit.lk</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievement -->
+      <div class="achievement-box">
+        <div class="achievement-icon"><svg width="40" height="40" fill="none" stroke="var(--indigo)" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+        <div>
+          <h3>Cisco Technopreneur Challenge — Top 10 Finalist</h3>
+          <p>The ExfilTrap team was recognized as a Top 10 Finalist in the Cisco Technopreneur Challenge, competing among innovative technology teams from across the region. A testament to the real-world impact and commercial viability of our DNS threat detection research.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div><!-- end about -->
+
+
+<!-- =========================================================
+     CONTACT PAGE
+     ========================================================= -->
+<div id="page-contact" class="page-content">
+  <section class="section">
+    <div class="container">
+      <!-- Header Section -->
+      <div class="contact-header-new">
+        <span class="contact-label-new">INQUIRIES &amp; COLLABORATIONS</span>
+        <h1 class="contact-title-new">Get in Touch with Research</h1>
+        <p class="contact-sub-new">Connect with the ExfilTrap academic team for detailed research findings, technical documentation, or potential research collaborations.</p>
+      </div>
+
+      <!-- Two Column Grid -->
+      <div class="contact-grid-new">
+        <!-- Left Column: Contact Information -->
+        <div class="contact-left-new">
+          
+          <section class="contact-section-new">
+            <h2 class="contact-section-title-new">Institutional Details</h2>
+            <div class="contact-items-new">
+              <div class="contact-row-new">
+                <div class="contact-icon-new">
+                  <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72l5 2.73 5-2.73v3.72z"/></svg>
+                </div>
+                <div>
+                  <h3 class="contact-row-title">SLIIT</h3>
+                  <p class="contact-row-sub">Faculty of Computing</p>
+                </div>
+              </div>
+              <div class="contact-row-new">
+                <div class="contact-icon-new">
+                  <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M17.81 4.47c-.08 0-.16-.02-.23-.06C15.66 3.42 14 3 12.01 3c-1.98 0-3.86.47-5.57 1.41-.24.13-.54.04-.68-.2-.13-.24-.04-.55.2-.68C7.82 2.52 9.86 2 12.01 2c2.13 0 3.99.47 6.03 1.52.25.13.34.43.21.67-.09.18-.26.28-.44.28zM3.5 9.72c-.1 0-.2-.03-.29-.09-.23-.16-.28-.47-.12-.7.99-1.4 2.25-2.5 3.75-3.27C9.98 4.04 14 4.03 17.15 5.65c1.5.77 2.76 1.86 3.75 3.25.16.22.11.54-.12.7-.23.16-.54.11-.7-.12-.89-1.24-2.02-2.22-3.35-2.91-2.83-1.46-6.45-1.45-9.3.01-1.34.69-2.47 1.66-3.36 2.91-.12.16-.31.25-.5.25zM12 15c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm0-5c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM9.54 18.59c-.21 0-.41-.12-.52-.32-.23-.42-.51-.81-.84-1.15-.2-.21-.19-.53.02-.73.21-.2.53-.19.73.02.38.4.71.85.98 1.34.13.25.04.56-.22.69-.04.02-.1.03-.15.03zM14.46 18.59c-.05 0-.11-.01-.15-.03-.25-.13-.35-.44-.22-.69.27-.49.6-1.12.98-1.54.2-.21.52-.22.73-.02.21.2.22.52.02.73-.34.35-.61.73-.84 1.15-.11.2-.31.32-.52.32zM12 22c-.28 0-.5-.22-.5-.5v-2.5c0-.28.22-.5.5-.5s.5.22.5.5v2.5c0 .28-.22.5-.5.5z"/></svg>
+                </div>
+                <div>
+                  <h3 class="contact-row-title">Project ID</h3>
+                  <p class="contact-row-sub mono">R-25-26J-066</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="contact-section-new">
+            <h2 class="contact-section-title-new">Faculty Supervisors</h2>
+            <div class="contact-items-new">
+              <div class="sup-card-new">
+                <p class="sup-label-new">SUPERVISOR</p>
+                <p class="sup-name-new">Mr. Kavinga Yapa</p>
+              </div>
+              <div class="sup-card-new">
+                <p class="sup-label-new">CO-SUPERVISOR</p>
+                <p class="sup-name-new">Ms. Ayesha Wijesooriya</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="contact-section-new">
+            <h2 class="contact-section-title-new">Research Team</h2>
+            <div class="team-emails-new">
+              <a href="mailto:it22369956@my.sliit.lk" class="email-row-new">
+                <div class="email-left-new">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
+                  <span>it22369956@my.sliit.lk</span>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="email-arrow-new"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="mailto:it22169662@my.sliit.lk" class="email-row-new">
+                <div class="email-left-new">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
+                  <span>it22169662@my.sliit.lk</span>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="email-arrow-new"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="mailto:it22883902@my.sliit.lk" class="email-row-new">
+                <div class="email-left-new">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
+                  <span>it22883902@my.sliit.lk</span>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="email-arrow-new"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="mailto:it22925022@my.sliit.lk" class="email-row-new">
+                <div class="email-left-new">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
+                  <span>it22925022@my.sliit.lk</span>
+                </div>
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="email-arrow-new"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Right Column: Contact Form -->
+        <div class="contact-right-new">
+          <div class="contact-form-card-new">
+            <h2>Send Us a Message</h2>
+            <div class="form-grid-new">
+              <div class="form-group-new">
+                <label>YOUR NAME</label>
+                <input type="text" placeholder="John Doe" />
+              </div>
+              <div class="form-group-new">
+                <label>EMAIL ADDRESS</label>
+                <input type="email" placeholder="john@university.edu" />
+              </div>
+            </div>
+            <div class="form-group-new" style="grid-column: 1 / -1;">
+              <label>SUBJECT</label>
+              <select>
+                <option>Research Inquiry</option>
+                <option>Data Access Request</option>
+                <option>Collaboration Proposal</option>
+                <option>Technical Support</option>
+              </select>
+            </div>
+            <div class="form-group-new" style="grid-column: 1 / -1;">
+              <label>MESSAGE</label>
+              <textarea placeholder="How can our research assist you?" rows="6"></textarea>
+            </div>
+            <button class="btn-submit-new" onclick="handleSubmit()" style="grid-column: 1 / -1;">
+              Send Message
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </button>
+            <p id="form-success" style="display:none;color:var(--emerald);margin-top:16px;font-weight:600;text-align:center;grid-column: 1 / -1;">✓ Message sent! We'll be in touch.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Demo Video Section -->
+      <div class="contact-video-new">
+        <a href="https://youtu.be/PiZkUQClmsE?si=AQ6pdRTxqCpvqcOo" target="_blank" class="video-card-new">
+          <div class="video-overlay-new">
+            <div class="play-btn-new">
+              <svg width="48" height="48" fill="white" viewBox="0 0 24 24" style="margin-left:6px;"><polygon points="8 5 19 12 8 19"/></svg>
+            </div>
+            <h2>ExfilTrap Demo Video</h2>
+            <p>Watch the technical walkthrough of the exfiltration detection engine.</p>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+</div><!-- end contact -->
+
+</div><!-- end .page -->
+
+<!-- Footer -->
+<footer>
+  <div style="max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;text-align:left;padding-bottom:24px;border-bottom:1px solid var(--border);margin-bottom:20px;">
+    <div>
+      <div style="font-weight:800;font-size:1.1rem;color:var(--text);margin-bottom:8px;">ExfilTrap</div>
+      <p style="font-size:.82rem;line-height:1.7;">Near Real-Time DNS Threat Detection &amp; Contextual Threat Intelligence. An ML-powered platform for detecting DNS tunneling, DGA-based C2 communication, and DNS infrastructure abuse.</p>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-sub);margin-bottom:10px;">Quick Links</div>
+      <div style="display:flex;flex-direction:column;gap:6px;font-size:.82rem;"><a href="#" onclick="showPage('home')" style="color:var(--text-dim);transition:all .2s;">Home</a><a href="#" onclick="showPage('domain')" style="color:var(--text-dim);transition:all .2s;">Domain</a><a href="#" onclick="showPage('milestones')" style="color:var(--text-dim);transition:all .2s;">Milestones</a><a href="#" onclick="showPage('about')" style="color:var(--text-dim);transition:all .2s;">About Us</a></div>
+    </div>
+    <div>
+      <div style="font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-sub);margin-bottom:10px;">Institution</div>
+      <p style="font-size:.82rem;line-height:1.7;">Sri Lanka Institute of Information Technology (SLIIT)<br/>Faculty of Computing<br/>Project ID: R-25-26J-066</p>
+    </div>
+  </div>
+  <p style="font-size:.75rem;text-align:center;">&copy; 2025–2026 ExfilTrap Research Team, SLIIT. All rights reserved.</p>
+</footer>
+
+<script>
+// ===== PAGE ROUTING =====
+function showPage(name) {
+  document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  const navEl = document.getElementById('nav-' + name);
+  if (navEl) navEl.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Close mobile menu
+  document.getElementById('navLinks').classList.remove('open');
+  return false;
+}
+
+// ===== HAMBURGER =====
+function toggleMenu() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// ===== MILESTONE SELECT =====
+function showMilestone(val) {
+  document.querySelectorAll('.milestone-card').forEach(c => c.classList.add('hidden'));
+  if (val) {
+    document.getElementById('milestone-' + val).classList.remove('hidden');
+  } else {
+    document.getElementById('milestone-default').classList.remove('hidden');
+  }
+}
+
+// ===== DOMAIN SIDEBAR NAV =====
+function domainNav(el) {
+  document.querySelectorAll('.domain-nav a').forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+  const target = document.querySelector(el.getAttribute('href'));
+  if (target) {
+    const offset = target.getBoundingClientRect().top + window.scrollY - 100;
+    window.scrollTo({ top: offset, behavior: 'smooth' });
+  }
+  return false;
+}
+
+// ===== FORM SUBMIT =====
+function handleSubmit() {
+  document.getElementById('form-success').style.display = 'block';
+  setTimeout(() => { document.getElementById('form-success').style.display = 'none'; }, 4000);
+}
+
+// ===== NAV CLICK INTERCEPT =====
+document.querySelectorAll('nav a[onclick]').forEach(a => {
+  a.addEventListener('click', e => e.preventDefault());
+});
+</script>
+</body>
+</html>
